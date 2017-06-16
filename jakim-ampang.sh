@@ -9,7 +9,7 @@ arrayWaq=("Imsak" "Subuh" "Syuruk" "Zuhur" "Asar" "Maghrib" "Isyak")
 
 echo '--------------------------'
 echo -n
-echo 'WAKTU SOLAT BAGI AMPANG'
+echo 'WAKTU SOLAT BAGI AMPANG UNTUK '${my_array[0]}
 echo '--------------------------'
 for ((i=2;i<${arrayLen};i++)); do echo "${arrayWaq[$i-2]}, ${my_array[$i]}"; done
 echo -n
