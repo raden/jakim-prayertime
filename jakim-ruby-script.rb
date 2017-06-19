@@ -1,8 +1,6 @@
 #!/usr/bin/ruby -w
 require 'nokogiri'
 require 'open-uri'
-require 'rexml/document'
-include REXML
 
 doc = Nokogiri::XML(open('http://www2.e-solat.gov.my/xml/today/?zon=SGR01')) 
 
@@ -27,3 +25,4 @@ end
 printf "\n"
 printf "------------------------------------------"
 printf "\n\n"
+
