@@ -3,15 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 
 doc = Nokogiri::XML(open('http://www2.e-solat.gov.my/xml/today/?zon=SGR01')) 
-
-Zones=[]
-doc.xpath('//item').each do|zone|
-Zones << {"Waktu"=>zone.xpath('title').text, "Masa"=>zone.xpath('description').text}
-end
-
-puts Zones
-
-printf "\n\n\n"
+printf "\n"
 
 expression="//item/title"
 nodes=doc.xpath(expression)
