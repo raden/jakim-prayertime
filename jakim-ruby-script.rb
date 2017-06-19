@@ -13,12 +13,17 @@ end
 
 puts Zones
 
+printf "\n\n\n"
+
 expression="//item/title"
 nodes=doc.xpath(expression)
 
 expression2="//item/description"
 nodes2=doc.xpath(expression2)
-
-for i in 0..7 do
-puts nodes.children[i],nodes2.children[i]
+printf "------------------------------------------"
+for i in 0..6 do
+printf "\nWaktu %s: \%s" % [nodes.children[i],nodes2.children[i]]
 end
+printf "\n"
+printf "------------------------------------------"
+printf "\n\n"
