@@ -1,9 +1,14 @@
 #!/usr/bin/ruby -w
+#  A Ruby-based JAKIM solat time parser by Muhammad Najmi Ahmad Zabidi
+#  Updated on June, 2018
 require 'nokogiri'
 require 'open-uri'
 
-doc = Nokogiri::XML(open('http://www2.e-solat.gov.my/xml/today/?zon=SGR01')) 
+doc = Nokogiri::XML(open("http://www2.e-solat.gov.my/xml/today/?zon=#{ARGV[0]}")) 
 printf "\n"
+
+expression0="//link"
+nodes0=doc.xpath(expression0)
 
 expression="//item/title"
 nodes=doc.xpath(expression)
@@ -16,6 +21,7 @@ nodes3=doc.xpath(expression3)
 
 printf "------------------------------------------"
 printf "\nJadual Solat Pada : %s "% nodes3.children 
+printf "\nuntuk kawasan: %s "% nodes0.children 
 printf "\n------------------------------------------"
 for i in 0..6 do
 printf "\nWaktu %s: \%s" % [nodes.children[i],nodes2.children[i]]
@@ -23,4 +29,3 @@ end
 printf "\n"
 printf "------------------------------------------"
 printf "\n\n"
-
