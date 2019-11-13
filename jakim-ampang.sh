@@ -1,18 +1,15 @@
-#!/bin/bash -l
+#!/bin/bash 
 
-#my_array=( $(lynx -dump http://www2.e-solat.gov.my/xml/today/?zon=SGR01|\
-my_array=( $(lynx -dump "https://www.e-solat.gov.my/index.php?r=esolatApi/xmlfeed&zon=SGR01"|\
-cut --complement -d "," -f 1,3,4|\
-grep -v H.S|cut --complement -d "M" -f 1) )
-
-printf "$my_array\n\n"
+raw_data=( $(lynx -dump -width 300 "https://www.e-solat.gov.my/index.php?r=esolatApi/xmlfeed&zon=SGR01" | sed 's/^\s*//g' ) )
+location=$(echo ${raw_data[@]} | sed 's/.*\(Gombak.*S.Alam\).*/\1/g')
+my_array=( $(echo ${raw_data[@]}| cut -d" " -f13- )  ) 
 arrayLen=${#my_array[@]}
 arrayWaq=("Imsak" "Subuh" "Syuruk" "Zuhur" "Asar" "Maghrib" "Isyak")
 
 echo '--------------------------'
 echo -n
-echo 'WAKTU SOLAT BAGI AMPANG UNTUK '${my_array[0]}
+echo 'WAKTU SOLAT BAGI AMPANG UNTUK '${location}
 echo '--------------------------'
-for ((i=2;i<${arrayLen};i++)); do echo "${arrayWaq[$i-2]}, ${my_array[$i]}"; done
+for ((i=0;i<${arrayLen};i++)); do echo "${arrayWaq[$i]}, ${my_array[$i]}"; done
 echo -n
 echo '--------------------------'
