@@ -4,7 +4,8 @@
 require 'nokogiri'
 require 'open-uri'
 
-doc = Nokogiri::XML(open("http://www2.e-solat.gov.my/xml/today/?zon=#{ARGV[0]}")) 
+#doc = Nokogiri::XML(open("http://www2.e-solat.gov.my/xml/today/?zon=#{ARGV[0]}")) 
+doc = Nokogiri::XML(open("https://www.e-solat.gov.my/index.php?r=esolatApi/xmlfeed&zon=#{ARGV[0]}")) 
 printf "\n"
 
 expression0="//link"

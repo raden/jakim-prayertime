@@ -8,4 +8,5 @@ xmlstarlet sel --net -t -n \
 -t -m "//item" -o "Waktu: " -v "title" \
  -o " -- " \
 -o "Masa: " -v "description" -n  \
-http://www2.e-solat.gov.my/xml/today/?zon=$1
+"https://www.e-solat.gov.my/index.php?r=esolatApi/xmlfeed&zon=$1"
+#http://www2.e-solat.gov.my/xml/today/?zon=$1
