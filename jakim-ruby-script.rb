@@ -1,6 +1,6 @@
 #!/usr/bin/ruby -w
 #  A Ruby-based JAKIM solat time parser by Muhammad Najmi Ahmad Zabidi
-#  Updated on June, 2018
+#  Updated on Nov, 2019
 require 'nokogiri'
 require 'open-uri'
 
