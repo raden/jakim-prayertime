@@ -1,5 +1,6 @@
-#http://www2.e-solat.gov.my/xml/today/?zon=SGR01
-xmlstarlet sel --net -t -n \
+#!/bin/bash
+lynx -source "https://www.e-solat.gov.my/index.php?r=esolatApi/xmlfeed&zon=$1" > /tmp/solat.xml
+xmlstarlet sel -T -t -n \
 -o "------------------------------" -n \
 -o "Kawasan: " \
 -m "//channel" -v "link" -n  \
@@ -7,6 +8,6 @@ xmlstarlet sel --net -t -n \
 -m "//channel" -v "dc:date" -n  \
 -o "------------------------------" -n \
 -t -m "//item" -o "Waktu: " -v "title" \
- -o " -- " \
+-o " -- " \
 -o "Masa: " -v "description" -n  \
-http://www2.e-solat.gov.my/xml/today/index.php?zon=$1
+/tmp/solat.xml
